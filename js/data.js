@@ -112,8 +112,30 @@ const icons =[
 		color: 'blue'
 	}
 ];
-function creatBox (icons){
 
+// Crea un colore random per categoria
+	const colorForcategories = [];
+
+	while(colorForcategories.length < 3){
+		colorForcategories.push(randomColor());
+	}
+
+	icons.forEach(element => {
+		if (element.type == 'animal'){
+			element.color =  colorForcategories[0];
+		}
+	
+		if (element.type == 'vegetable'){
+			element.color =  colorForcategories[1];
+		}
+	
+		if (element.type == 'user'){
+			element.color =  colorForcategories[2];
+		}
+	});
+
+
+function creatBox (icons){
 	const containerBox = document.querySelector(".container");
 
 	const{name, prefix, type, family, color} = icons;
@@ -127,7 +149,7 @@ function creatBox (icons){
 	const fontIcon = document.createElement('i');
 	fontIcon.classList.add(family);
 	fontIcon.classList.add(prefix+name);
-	fontIcon.style.color = randomColor();
+	fontIcon.style.color =  color;
 	box.appendChild(fontIcon);
 
 
@@ -139,6 +161,7 @@ function creatBox (icons){
 
 // Creo i box secondo le opzioni selezionate
 const selecElement = document.getElementById("categoriesFilter");
+
 
 
 selecElement.addEventListener('change', function(){
@@ -176,3 +199,4 @@ function randomColor() {
 	}
 	return color;
   }
+
