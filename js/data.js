@@ -112,8 +112,6 @@ const icons =[
 		color: 'blue'
 	}
 ];
-
-
 function creatBox (icons){
 
 	const containerBox = document.querySelector(".container");
@@ -129,7 +127,7 @@ function creatBox (icons){
 	const fontIcon = document.createElement('i');
 	fontIcon.classList.add(family);
 	fontIcon.classList.add(prefix+name);
-	fontIcon.style.color = color;
+	fontIcon.style.color = randomColor();
 	box.appendChild(fontIcon);
 
 
@@ -138,10 +136,6 @@ function creatBox (icons){
 	box.appendChild(text);
 	text.innerHTML = name;
 }
-
-// Creo i box
-// icons.forEach(element => creatBox(element));
-
 
 // Creo i box secondo le opzioni selezionate
 const selecElement = document.getElementById("categoriesFilter");
@@ -172,3 +166,13 @@ selecElement.addEventListener('change', function(){
 		user.forEach(element => creatBox(element));
 	}
 });
+
+// Questa funzione crea un colore random
+function randomColor() {
+	const colorsCharacters = '0123456789ABCDEF';
+	let color = '#';
+	for (var i = 0; i < 6; i++) {
+	  color += colorsCharacters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+  }
