@@ -140,4 +140,35 @@ function creatBox (icons){
 }
 
 // Creo i box
-icons.forEach(element => creatBox(element));
+// icons.forEach(element => creatBox(element));
+
+
+// Creo i box secondo le opzioni selezionate
+const selecElement = document.getElementById("categoriesFilter");
+
+
+selecElement.addEventListener('change', function(){
+
+	// Ad ogni cambio svuto il container
+	const containerBox = document.querySelector(".container");
+	containerBox.innerHTML = '';
+
+	if(selecElement.value == 'all'){
+		icons.forEach(element => creatBox(element));
+	}
+
+	if(selecElement.value == 'animal'){
+		const animal = icons.filter(item => item.type == 'animal');
+		animal.forEach(element => creatBox(element));
+	}
+
+	if(selecElement.value == 'vegetable'){
+		const vegetable = icons.filter(item => item.type == 'vegetable');
+		vegetable.forEach(element => creatBox(element));
+	}
+
+	if(selecElement.value == 'user'){
+		const user = icons.filter(item => item.type == 'user');
+		user.forEach(element => creatBox(element));
+	}
+});
