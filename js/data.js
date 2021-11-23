@@ -1,4 +1,4 @@
-[
+const icons =[
 	{
 		name: 'cat',
 		prefix: 'fa-',
@@ -112,3 +112,32 @@
 		color: 'blue'
 	}
 ];
+
+
+function creatBox (icons){
+
+	const containerBox = document.querySelector(".container");
+
+	const{name, prefix, type, family, color} = icons;
+
+	//Costruisco il box
+	const box = document.createElement('div');
+	box.classList.add("box");
+	containerBox.appendChild(box);
+
+	//Costruisco l'icona
+	const fontIcon = document.createElement('i');
+	fontIcon.classList.add(family);
+	fontIcon.classList.add(prefix+name);
+	fontIcon.style.color = color;
+	box.appendChild(fontIcon);
+
+
+	//Costruisco il testo
+	const text = document.createElement('span');
+	box.appendChild(text);
+	text.innerHTML = name;
+}
+
+// Creo i box
+icons.forEach(element => creatBox(element));
